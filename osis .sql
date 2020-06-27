@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 25 Jun 2020 pada 13.07
+-- Waktu pembuatan: 27 Jun 2020 pada 09.51
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -43,8 +43,9 @@ CREATE TABLE `kandidat` (
 --
 
 INSERT INTO `kandidat` (`no_kandidat`, `nis`, `foto`, `visi`, `misi`, `suara`, `periode`) VALUES
-(15, 123456, 'default.png', 'aku akan menjadi yang terbaik', 'adil', 0, ''),
-(17, 0, '0', 'aku akan menjadi yang terbaik', 'berani', 0, '');
+(17, 0, '0', 'aku akan menjadi yang terbaik', 'berani', 0, ''),
+(18, 123456, '0', 'aku akan menjadi yang terbaik', 'berani', 0, ''),
+(19, 45678, '0', 'aku akan menjadi yang terbaik', 'jujur', 0, '');
 
 -- --------------------------------------------------------
 
@@ -93,6 +94,28 @@ CREATE TABLE `pembina` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `t_login`
+--
+
+CREATE TABLE `t_login` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `t_login`
+--
+
+INSERT INTO `t_login` (`id`, `username`, `password`, `level`) VALUES
+(1, 'mumu', 'mumu', 'admin'),
+(2, 'user', 'user', 'user'),
+(3, 'operator', 'operator', 'operator');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -111,10 +134,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`nis`, `password`, `nama`, `tanggal_lahir`, `jk`, `id_kelas`, `pemilih`) VALUES
-(0, '42fxkIEc', 'Murnati', '2020-06-04', 'Perempuan', 2, 'n'),
+(0, '42fxkIEc', 'Murnati', '2020-06-04', 'Perempuan', 3, 'n'),
 (888, 'ikOl2RmI', 'mumu', '2020-06-06', 'Perempuan', 2, 'n'),
 (45678, 'FKoNUiEe', 'miftah', '2020-06-03', 'Laki-laki', 3, 'n'),
-(99000, 'Ow3HZoc1', 'ibro', '2020-06-04', 'Laki-laki', 1, 'n'),
+(121213, 'kqVuYbHt', 'sasss', '2020-06-13', 'Laki-laki', 1, 'n'),
 (123456, '1ptIqOM6', 'mega', '2020-06-11', 'Perempuan', 1, 'n');
 
 -- --------------------------------------------------------
@@ -160,6 +183,12 @@ ALTER TABLE `pembina`
   ADD PRIMARY KEY (`id_pembina`);
 
 --
+-- Indeks untuk tabel `t_login`
+--
+ALTER TABLE `t_login`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -182,7 +211,7 @@ ALTER TABLE `voter`
 -- AUTO_INCREMENT untuk tabel `kandidat`
 --
 ALTER TABLE `kandidat`
-  MODIFY `no_kandidat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `no_kandidat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelas`
@@ -201,6 +230,12 @@ ALTER TABLE `operator`
 --
 ALTER TABLE `pembina`
   MODIFY `id_pembina` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `t_login`
+--
+ALTER TABLE `t_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `voter`
