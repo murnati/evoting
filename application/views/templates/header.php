@@ -38,47 +38,47 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <?php if ($level == "admin") : ?>
-                            <a class="nav-link" href="<?= base_url('vote/admin'); ?>">
-                                <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
-                                Dashboard
-                            </a>
-                            <? elseif ($level == "operator") : ?>
-                            <a class="nav-link" href="<?= base_url('vote/operator'); ?>">
-                                <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
-                                Dashboard
-                            </a>
-                        <?php else : ?>
-
-                        <?php endif; ?>
+                        <?php 
+                            if ($this->session->userdata('level') == 'admin') {?>
+                                <a class="nav-link" href="<?= base_url('vote/admin'); ?>">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
+                                    Dashboard
+                                </a>
+                            <?php }else{?>
+                                <a class="nav-link" href="<?= base_url('vote/operator'); ?>">
+                                    <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
+                                    Dashboard
+                                </a>
+                        <?php } ?>
                         <div class="sb-sidenav-menu-heading">Interface</div>
-                        <?php if ($level == "admin") : ?>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <?php
+                            if ($this->session->userdata('level') == "admin") { ?>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 
-                                <a class="nav-link" href="<?= base_url('vote/kandidat'); ?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
-                                    Data Kandidat
-                                </a>
-                                <a class="nav-link" href="<?= base_url('vote/siswa'); ?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
-                                    Data Siswa
-                                </a>
-                                <a class="nav-link" href="<?= base_url('vote/hasil'); ?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    Hasil Voting
-                                </a>
-                                <a class="nav-link" href="<?= base_url('vote/voter'); ?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    Data Voter
-                                </a>
-                                <? elseif ($level == "operator") : ?>
-                                <a class="nav-link" href="<?= base_url('vote/siswa'); ?>">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
-                                    Data Siswa
-                                </a>
-                            <?php else : ?>
-
-                            <?php endif; ?>
+                                    <a class="nav-link" href="<?= base_url('vote/kandidat'); ?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                                        Data Kandidat
+                                    </a>
+                                    <a class="nav-link" href="<?= base_url('vote/siswa'); ?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                                        Data Siswa
+                                    </a>
+                                    <a class="nav-link" href="<?= base_url('vote/hasil'); ?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                        Hasil Voting
+                                    </a>
+                                    <a class="nav-link" href="<?= base_url('vote/voter'); ?>">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Data Voter
+                                    </a>
+                                    <?php }else if($this->session->userdata('level') == 'operator'){ ?>
+                                        <a class="nav-link" href="<?= base_url('vote/siswa'); ?>">
+                                            <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                                            Data Siswa
+                                        </a>
+                                <?php }
+                            ?>
+                           
                     </div>
                 </div>
 

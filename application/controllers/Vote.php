@@ -17,7 +17,7 @@ class Vote extends CI_Controller
     public function user()
     {
         $data['kandidat'] = $this->db->get('kandidat')->result_array();
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header_user', $data);
         $this->load->view('home/user', $data);
@@ -26,7 +26,6 @@ class Vote extends CI_Controller
 
     public function operator()
     {
-        $data['level'] = $this->session->level;
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header_operator', $data);
         $this->load->view('home/operator');
@@ -35,7 +34,7 @@ class Vote extends CI_Controller
 
     public function admin()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header', $data);
         $this->load->view('home/admin');
@@ -45,7 +44,7 @@ class Vote extends CI_Controller
     public function siswa()
     {
         $data['tb_users'] = $this->db->get('users')->result_array();
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         if ($this->input->post('keyword')) {
             $data['tb_users'] = $this->Siswa_model->cariDataSiswa();
@@ -58,7 +57,7 @@ class Vote extends CI_Controller
     public function siswaOp()
     {
         $data['tb_users'] = $this->db->get('users')->result_array();
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         if ($this->input->post('keyword')) {
             $data['tb_users'] = $this->Siswa_model->cariDataSiswa();
@@ -70,7 +69,7 @@ class Vote extends CI_Controller
 
     public function tambahDataSiswa()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'tambah data siswa';
         $data['kelas'] = $this->db->get('kelas')->result_array();
         $data['generate'] = $this->Siswa_model->otomatisPass(8);
@@ -90,7 +89,7 @@ class Vote extends CI_Controller
 
     public function tambahDataSiswaOp()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'tambah data siswa';
         $data['kelas'] = $this->db->get('kelas')->result_array();
         $data['generate'] = $this->Siswa_model->otomatisPass(8);
@@ -111,7 +110,7 @@ class Vote extends CI_Controller
     public function kandidat()
     {
         $data['tb_kandidat'] = $this->db->get('kandidat')->result_array();
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header', $data);
         $this->load->view('kandidat/index');
@@ -120,7 +119,7 @@ class Vote extends CI_Controller
 
     public function tambahDataKandidat()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'tambah data kandidat';
         $data['generate'] = $this->Siswa_model->otomatisPass(8);
         $this->form_validation->set_rules('nis', 'Nis', 'required|numeric');
@@ -141,7 +140,7 @@ class Vote extends CI_Controller
 
     public function voter()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header', $data);
         $this->load->view('menu/voter');
@@ -150,7 +149,7 @@ class Vote extends CI_Controller
 
     public function hasil()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header', $data);
         $this->load->view('menu/hasil');
@@ -179,7 +178,7 @@ class Vote extends CI_Controller
 
     public function edit($nis)
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'Form Edit Data Siswa';
         $data['siswa'] = $this->Siswa_model->getSiswaByNis($nis);
         $data['kelas'] = $this->db->get('kelas')->result_array();
@@ -200,7 +199,7 @@ class Vote extends CI_Controller
 
     public function edit_op($nis)
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'Form Edit Data Siswa';
         $data['siswa'] = $this->Siswa_model->getSiswaByNis($nis);
         $data['kelas'] = $this->db->get('kelas')->result_array();
@@ -221,7 +220,7 @@ class Vote extends CI_Controller
 
     public function editKandidat($no_kandidat)
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'Form Edit Data Siswa';
         $data['kandidat'] = $this->Siswa_model->getKandidatByNo($no_kandidat);
 
@@ -243,7 +242,7 @@ class Vote extends CI_Controller
 
     public  function detail_kandidat($no_kandidat)
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'Detail Data Kandidat';
         $data['kandidat'] = $this->Siswa_model->getKandidatByNo($no_kandidat);
         $this->load->view('templates/header', $data);
@@ -271,7 +270,7 @@ class Vote extends CI_Controller
     }
     public function gantipass()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'Form ganti password';
         $data['user'] = $this->db->get_where('users', ['nis' => $this->session->userdata('nis')])->result_array();
         $this->load->view('templates/header', $data);
@@ -280,7 +279,7 @@ class Vote extends CI_Controller
     }
     public function gantipass_op()
     {
-        $data['level'] = $this->session->level;
+        
         $data['judul'] = 'E - Voting';
         $this->load->view('templates/header_operator', $data);
         $this->load->view('menu/ganti_pass_op');
